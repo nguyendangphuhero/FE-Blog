@@ -1,0 +1,15 @@
+.post-container {
+  margin-bottom: 0.5rem;
+}
+
+.post-title {
+  color: black;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.post-detail {
+  color: rgb(117, 117, 117);
+  font-size: small;
+  margin-right: 0.25rem;
+}
