@@ -1,0 +1,37 @@
+stages:
+  - test
+  - prepare_publish
+
+# workflow:
+#   rules:
+#     - if: $CI_COMMIT_REF_NAME =~ /(^realease\/)|(^main)/
+#       when: always
+#     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "dev"
+#       when: always
+#     - when: never
+
+# test-and-build-code:
+
+#   stage: test
+
+#   image: node:latest
+
+#   before_script:
+#     - npm install
+#     # npm run lint...
+#     - npm test
+#   script:
+#     - npm run build
+
+upload_code_to_s3_bucket:
+  image: node:latest
+  stage: prepare_publish
+  # rules:
+  #   - if: $CI_COMMIT_REF_NAME =~ /(^realease\/)|(^main)/
+  #     when: manual
+  before_script:
+    - ./script/install_awscli.sh
+  script:
+    - ./script/push_code_to_s3_bucket.sh
+
+
